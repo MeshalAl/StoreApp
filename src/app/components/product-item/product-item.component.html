@@ -1,1 +1,9 @@
-<p>product-item works!</p>
+<div class="product-container">
+    <img class="product-image" [src]="product.url">
+    <div>
+        <p>{{ product.name }}</p>
+    </div>
+    <div>
+        <span>${{product.price}}</span>
+    </div>
+    
