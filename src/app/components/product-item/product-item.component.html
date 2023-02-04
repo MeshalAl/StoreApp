@@ -4,6 +4,17 @@
         <p>{{ product.name }}</p>
     </div>
     <div>
-        <span>${{product.price}}</span>
+        <span>${{ product.price }}</span>
     </div>
+    <div>
+        <select class="select-input" id="quantity" [(ngModel)]="quantity">
+            <option *ngFor="let quantity of quantityRange" [value]="quantity">
+                {{ quantity }}
+            </option>
+        </select>
+    </div>
+    <div>
+        <button (click)="addProduct(product)"> Add to cart</button>
+    </div>
+</div>
     

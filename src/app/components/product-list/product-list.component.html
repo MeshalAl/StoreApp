@@ -1,6 +1,5 @@
 <div class="product-index"> 
     <app-product-item class="product-container"
-    *ngFor="let product of products" 
-    [product]="product"
+    *ngFor="let product of products" [product]="product" (productAdded)="productAdded($event)"
     ></app-product-item>
 </div>
