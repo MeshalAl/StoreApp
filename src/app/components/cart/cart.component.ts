@@ -12,12 +12,23 @@ import { ProductListComponent } from '../product-list/product-list.component';
 
 export class CartComponent {
   cartProducts: Cart[] = [];
+  total: number = 0;
 
   constructor(private CartService: CartService) {};
 
   ngOnInit(){
     this.cartProducts = this.CartService.getCartProducts();
+    this.calculateTotal();
   }
 
+  changedQuantity(event: any) {
+   // calculate total 
+  }
+
+  calculateTotal() {
+    this.cartProducts.forEach( (i) => {
+      this.total += i.quantity * i.product.price;
+    })
+  }
   
 }

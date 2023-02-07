@@ -1,13 +1,28 @@
-<div class="cart-container">
-        <div class="cart-panel">
-            <div *ngFor="let product of cartProducts">
-                <div class="cart-item">
-                    <img [src]="product.product.url">
-                    <div class="cart-item-details">
-                        <h3>{{ product.product.name }}</h3>
-                        <h4>${{ product.product.price }}</h4>
+
+
+    <div class="cart-container">
+            <div class="cart-panel">
+                <div *ngFor="let cartProduct of cartProducts">
+                    <div class="cart-item">
+                        <img [src]="cartProduct.product.url">
+                        <div class="cart-item-details">
+                            <h4>{{ cartProduct.product.name }}</h4>
+                            <p>${{ cartProduct.product.price }}</p>
+                            <div style="display: inline">
+                                <label >Amount: </label><input class="number-input" type="number" min="0" [ngModel]="cartProduct.quantity" (ngModelChange)="changedQuantity($event)">
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div *ngIf="cartProducts.length > 0">
+                    <h3 ngif>Total:{{ total }}</h3>
+                </div>
             </div>
-        </div>
+            <form #form="ngForm" class="form-margin">
+            <!-- todo form fields -->
+            </form>
+    </div>
+
+<div class="empty-cart-message" *ngIf="cartProducts.length == 0">
+    <h4>Cart is empty.</h4>
 </div>
