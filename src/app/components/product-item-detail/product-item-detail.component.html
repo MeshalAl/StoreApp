@@ -1,1 +1,26 @@
-<p>product-item-detail works!</p>
+<div class="detail-container">
+    <div class="detail-item">
+        <img [src]="product.url">
+    </div>
+    <div class="detail-item">
+        <div>
+            <h2> {{ product.name }}</h2>
+            <p> ${{ product.price }}</p>
+            <p> {{ product.description }}</p>
+        </div>
+        <div>
+            <select class="select-input" id="quantity" [(ngModel)]="quantity">
+                <option *ngFor="let quantity of quantityRange" [value]="quantity">
+                    {{ quantity }}
+                </option>
+            </select>
+        </div>
+        <div>
+            <button (click)="addProduct(product)">Add to Cart</button>
+        </div>
+        <div>
+            <a class="back-link" routerLink=""> ← Back to products</a>
+        </div>
+    </div>
+    
+</div>

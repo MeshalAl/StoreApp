@@ -5,7 +5,7 @@ img {
   
   .select-input {
     width: 108px; 
-    margin-bottom: 8px;
+    margin-bottom: 20px;
   }
   
   .detail-container {
@@ -23,3 +23,6 @@ img {
   .back-link {
     margin-top: 8px;
   }
+button {
+  margin-bottom: 5%;
+}

@@ -1,6 +1,6 @@
 <div class="product-container">
-    <img class="product-image" [src]="product.url">
-    <div>
+    <img class="product-image" [src]="product.url" routerLink="/product/{{product.id}}">
+    <div routerLink="/product/{{product.id}}">
         <p>{{ product.name }}</p>
     </div>
     <div>
