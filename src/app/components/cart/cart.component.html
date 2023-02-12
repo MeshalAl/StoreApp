@@ -1,27 +1,39 @@
 
 
-    <div class="cart-container">
-            <div class="cart-panel">
-                <div *ngFor="let cartProduct of cartProducts">
-                    <div class="cart-item">
-                        <img [src]="cartProduct.product.url">
-                        <div class="cart-item-details">
-                            <h4>{{ cartProduct.product.name }}</h4>
-                            <p>${{ cartProduct.product.price }}</p>
-                            <div style="display: inline">
-                                <label >Amount: </label><input class="number-input" type="number" min="0" [ngModel]="cartProduct.quantity" (ngModelChange)="changedQuantity($event)">
-                            </div>
+<div class="cart-container" *ngIf="cartProducts.length > 0">
+        <div class="cart-panel">
+            <div *ngFor="let cartProduct of cartProducts; index as i">
+                <div class="cart-item">
+                    <img [src]="cartProduct.product.url">
+                    <div class="cart-item-details">
+                        <h4>{{ cartProduct.product.name }}</h4>
+                        <p>${{ cartProduct.product.price }}</p>
+                        <div style="display: inline">
+                            <label >Amount: </label><input class="number-input" type="number" min="0" [ngModel]="cartProduct.quantity" (ngModelChange)="changedQuantity($event, i)">
                         </div>
                     </div>
                 </div>
-                <div *ngIf="cartProducts.length > 0">
-                    <h3 ngif>Total:{{ total }}</h3>
-                </div>
             </div>
+            <div *ngIf="cartProducts.length > 0">
+                <h3 ngif>Total: ${{ total }}</h3>
+            </div>
+        </div>
+        <div class="cart-container">
             <form #form="ngForm" class="form-margin">
-            <!-- todo form fields -->
+                <div>
+                    <label for="nameInput">Full name:</label>
+                    <input ngModel type="text" minlength="3" name="name" id="nameInput" placeholder="(minimum 3 characters)" required>
+                    <label for="addressInput">Address: </label>
+                    <input ngModel type="text" minlength="6" name="address" id="addressInput" placeholder="(minimum 6 characters)" required>
+                    <label for="creditCardInput">Credit card number: </label>
+                    <input ngModel type="text" minlength="16" maxlength="16" name="creditCard" id="creditCardInput" placeholder="(16-digit-number)" pattern="[0-9]*" required>
+                </div>
+                <p class="informational-text">We'll never share your payment details with anyone else.</p>
+                <button type="submit" [disabled]="form.invalid" (click)="submit(form)">submit</button>
             </form>
-    </div>
+        </div>
+
+</div>
 
 <div class="empty-cart-message" *ngIf="cartProducts.length == 0">
     <h4>Cart is empty.</h4>
