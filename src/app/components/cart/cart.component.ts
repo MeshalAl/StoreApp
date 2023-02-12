@@ -40,7 +40,9 @@ export class CartComponent {
     this.cartProducts.forEach( (i) => {
       this.total += i.quantity * i.product.price;
     })
+    this.total = Number(this.total.toFixed(2));
   }
+
   submit(form: any) {
     const order: Order = {
       customer: form.value.name,
