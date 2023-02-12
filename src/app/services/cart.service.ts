@@ -25,7 +25,10 @@ export class CartService {
     let status = false;
     this.cartProducts.forEach( (product) => {
       if (cart.product.id == product.product.id) {
-        product.quantity += cart.quantity;
+        console.log("pre-add", product.quantity, cart.quantity);
+        product.quantity = (Number(cart.quantity) + Number(product.quantity));
+        console.log("post add " , product.quantity, cart.quantity);
+        console.log("types: ", typeof(product.quantity))
         status = true;
       }
     })
@@ -33,5 +36,13 @@ export class CartService {
   }
   getCartProducts(){
     return this.cartProducts;
+  }
+  removedFromCart(index: number){
+    this.cartProducts.splice(index, 1);
+    return this.cartProducts;
+  }
+
+  clearCart(){
+    this.cartProducts = [];
   }
 }
