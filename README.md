@@ -11,6 +11,9 @@ Before running, use `npm install` to install the required dependancies.
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Project features
+This project mimics the behvaiour of a real e-commerce store, by displaying products, adding them to a cart and placing order.
+
+Pages and features:
 
   1. Product list page, which displays the available products for the user to choose and add to their cart (in various quantities)
   2. Product details page, which displays more information about any particular product
